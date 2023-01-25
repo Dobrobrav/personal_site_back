@@ -22,6 +22,9 @@ class Address(models.Model):
         blank=True, null=True,
         verbose_name='Номер',
     )
+    postcode = models.IntegerField(
+        verbose_name='Почтовый индекс',
+    )
 
     def __str__(self):
         return f"ул. {self.street_name}, дом. {self.street_number}, " \
@@ -93,12 +96,9 @@ class Office(models.Model):
         Address, on_delete=models.DO_NOTHING,
         verbose_name='Адрес',
     )
-    postcode = models.IntegerField(
-        verbose_name='Почтовый индекс',
-    )
 
     def __str__(self):
-        return f"office on {self.address}"
+        return f"офис по адресу {self.address}"
 
     class Meta:
         verbose_name = 'Офис'

@@ -10,6 +10,7 @@ class MainInfoAPIView(DebugQueryMixin, generics.RetrieveAPIView):
     serializer_class = MainInfoSerializer
 
     def get_object(self):
+        # print(self.request.data)
         profile_id = self.request.data['profile_id']
         # profile_id = 1
         profile = Profile.objects.select_related('department') \
