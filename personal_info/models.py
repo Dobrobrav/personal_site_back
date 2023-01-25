@@ -27,8 +27,12 @@ class Address(models.Model):
     )
 
     def __str__(self):
-        return f"ул. {self.street_name}, дом. {self.street_number}, " \
-               f"номер. {self.apartment_number}"
+        return f"страна {self.country}, " \
+               f"рег. {self.region or '<не указано>'}, " \
+               f"{self.locality}, " \
+               f"ул. {self.street_name}, " \
+               f"дом. {self.street_number}, " \
+               f"номер. {self.apartment_number or '<не указано>'}"
 
     class Meta:
         verbose_name = 'Адрес'
@@ -98,7 +102,7 @@ class Office(models.Model):
     )
 
     def __str__(self):
-        return f"офис по адресу {self.address}"
+        return f"Офис по адресу: {self.address}"
 
     class Meta:
         verbose_name = 'Офис'
