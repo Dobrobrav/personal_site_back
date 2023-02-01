@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-9f94*@d)8ch9cidde+qf&vqyrxwf6r139mappp)qs9atc=ukxf
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'personal_info.apps.PersonalInfoConfig',
     'debug_toolbar',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    # "corsheaders.middleware.CorsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'personal_site_back.urls'
@@ -87,7 +89,7 @@ DATABASES = {
         'NAME': 'personal_site',
         'USER': 'root',
         'PASSWORD': '1771',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
