@@ -25,7 +25,7 @@ class ContactDetailsSerializer(serializers.Serializer):
     apartment_number = serializers.IntegerField(
         source='office.address.apartment_number')
     postcode = serializers.IntegerField(
-        source='office.postcode')
+        source='office.address.postcode')
     telephone_extension = serializers.IntegerField(
         source='contact_details.telephone_extension')
     work_phone_number = serializers.CharField(
