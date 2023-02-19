@@ -100,6 +100,10 @@ class Office(models.Model):
         Address, on_delete=models.DO_NOTHING,
         verbose_name='Адрес',
     )
+    link_to_picture = models.URLField(
+        blank=True, null=True,
+        verbose_name='Ссылка на изображение',
+    )
 
     def __str__(self):
         return f"Офис по адресу: {self.address}"

@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  db:
+    container_name: db
+    image: mysql:8
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: 'personal_site'
+      MYSQL_USER: django
+      MYSQL_PASSWORD: 1771
+      MYSQL_ROOT_PASSWORD: 1771
+    restart: always
+    volumes:
+      - mysql_data:/data/mysql/
+
+  web:
+    container_name: django
+    build: .
+    command: bash -c "python /usr/src/web/manage.py migrate --noinput && python /usr/src/web/manage.py runserver 0.0.0.0:8000"
+    restart: always
+    volumes:
+      - .:/usr/src/web
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:

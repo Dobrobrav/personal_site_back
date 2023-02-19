@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
-
 
 # Application definition
 
@@ -79,21 +77,39 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'personal_site_back.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'personal_site',
-        'USER': 'root',
-        'PASSWORD': '1771',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+DOCKER_IN = {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'personal_site',
+    'USER': 'django',
+    'PASSWORD': '1771',
+    'HOST': 'db',
+    'PORT': '3306',
 }
 
+DOCKER_OUT = {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'personal_site',
+    'USER': 'root',
+    'PASSWORD': '1771',
+    'HOST': '127.0.0.1',
+    'PORT': '3307',
+}
+
+PC = {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'personal_site',
+    'USER': 'root',
+    'PASSWORD': '1771',
+    'HOST': '127.0.0.1',
+    'PORT': '3306',
+}
+
+DATABASES = {
+    'default': DOCKER_IN
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -113,7 +129,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -124,7 +139,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

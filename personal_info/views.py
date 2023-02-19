@@ -6,7 +6,7 @@ from .serializers import *
 from .models import *
 
 
-class MainInfoAPIView(generics.RetrieveAPIView):
+class MainInfoAPIView(DebugQueryMixin, generics.RetrieveAPIView):
     serializer_class = MainInfoSerializer
 
     def get_object(self):
@@ -26,7 +26,7 @@ class ContactDetailsAPIView(DebugQueryMixin, generics.RetrieveAPIView):
         return profile
 
 
-class InterestsAPIView(generics.ListAPIView):
+class InterestsAPIView(DebugQueryMixin, generics.ListAPIView):
     serializer_class = InterestsSerializer
 
     def get_queryset(self):
@@ -34,7 +34,7 @@ class InterestsAPIView(generics.ListAPIView):
         return profile.interests.all()
 
 
-class CertificatesAPIView(generics.ListAPIView):
+class CertificatesAPIView(DebugQueryMixin, generics.ListAPIView):
     serializer_class = CertificatesSerializer
 
     def get_queryset(self):
@@ -42,7 +42,7 @@ class CertificatesAPIView(generics.ListAPIView):
         return profile.certificates.all()
 
 
-class FooterInfoAPIView(generics.RetrieveAPIView):
+class FooterInfoAPIView(DebugQueryMixin, generics.RetrieveAPIView):
     serializer_class = FooterSerializer
 
     def get_object(self):
