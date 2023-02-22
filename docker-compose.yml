@@ -12,12 +12,14 @@ services:
       MYSQL_ROOT_PASSWORD: 1771
     restart: always
     volumes:
-      - mysql_data:/data/mysql/
+      - ./data/mysql/:/var/lib/mysql/
 
   web:
     container_name: django
     build: .
-    command: bash -c "python /usr/src/web/manage.py migrate --noinput && python /usr/src/web/manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DJANGO_SUPERUSER_PASSWORD=123
+    command: bash -c "python /usr/src/web/manage.py migrate --noinput && python /usr/src/web/manage.py runserver 0.0.0.0:8000 && python /usr/src/web/manage.py createsuperuser"
     restart: always
     volumes:
       - .:/usr/src/web
@@ -25,6 +27,3 @@ services:
       - "8000:8000"
     depends_on:
       - db
-
-volumes:
-  mysql_data:
