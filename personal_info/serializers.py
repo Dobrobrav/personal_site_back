@@ -26,19 +26,21 @@ class ContactDetailsSerializer(serializers.Serializer):
         source='office.address.apartment_number')
     postcode = serializers.IntegerField(
         source='office.address.postcode')
+    office_number = serializers.IntegerField(
+        source='office.number')
     telephone_extension = serializers.IntegerField(
         source='contact_details.telephone_extension')
     work_phone_number = serializers.CharField(
         max_length=17, source='contact_details.work_phone_number')
     additional_phone_number = serializers.CharField(
         max_length=17, source='contact_details.additional_phone_number')
-    link_to_photo = serializers.CharField(
+    link_to_photo = serializers.URLField(
         max_length=100)
     telegram_name = serializers.CharField(
         max_length=35, source='contact_details.telegram_name')
-    link_to_telegram = serializers.CharField(
+    link_to_telegram = serializers.URLField(
         max_length=100, source='contact_details.link_to_telegram')
-    link_to_vk = serializers.CharField(
+    link_to_vk = serializers.URLField(
         max_length=100, source='contact_details.link_to_vk')
 
 
