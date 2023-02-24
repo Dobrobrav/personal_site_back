@@ -63,14 +63,17 @@ class ContactDetails(models.Model):
     link_to_telegram = models.URLField(
         blank=True, null=True,
         verbose_name='Ссылка на телеграм-аккаунт',
+        max_length=400,
     )
     link_to_vk = models.URLField(
         blank=True, null=True,
         verbose_name='Ссылка на ВК-аккаунт',
+        max_length=400,
     )
     link_to_youtube = models.URLField(
         blank=True, null=True,
         verbose_name='Ссылка на ютуб-канал',
+        max_length=400,
     )
 
     def __str__(self):
@@ -103,6 +106,11 @@ class Office(models.Model):
     link_to_picture = models.URLField(
         blank=True, null=True,
         verbose_name='Ссылка на изображение',
+        max_length=400,
+    )
+    number = models.IntegerField(
+        blank=True, null=True,
+        verbose_name='Номер'
     )
 
     def __str__(self):
@@ -138,6 +146,7 @@ class Profile(models.Model):
     link_to_photo = models.URLField(
         blank=True, null=True,
         verbose_name='Ссылка на фото',
+        max_length=400,
     )
 
     def __str__(self):
@@ -155,6 +164,7 @@ class Interest(models.Model):
     link_to_picture = models.URLField(
         blank=True, null=True,
         verbose_name='Ссылка на картинку',
+        max_length=400,
     )
     profiles = models.ManyToManyField(
         Profile, related_name='interests',
@@ -175,6 +185,7 @@ class Certificate(models.Model):
     link_to_picture = models.URLField(
         blank=True, null=True,
         verbose_name='Ссылка на картинку',
+        max_length=400,
     )
     profiles = models.ManyToManyField(
         Profile, related_name='certificates',
